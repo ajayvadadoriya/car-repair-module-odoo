@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_car_diagnosis_form" model="ir.ui.view">
+        <field name="name">car.diagnosis.form</field>
+        <field name="model">car.diagnosis</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                        <group>
+                            <field name="car"/>
+                            <field name="license_id"/>
+                            <field name="chassis_number"/>
+                        </group>
+                        <group>
+                            <field name="model"/>
+                            <field name="fuel_type"/>
+                            <field name="car_manufacturing_year"/>
+                        </group>
+                    <notebook>
+                        <page string="Service Detail">
+                                <group>
+                                    <field name="under_guarantee" widget="radio"/>
+                                    <field name="guarantee_type" widget="radio"/>
+                                    <field name="service"/>
+                                    <field name="damage"/>
+                                </group>
+                                <group>
+                                    <field name="nature_of_service"/>
+                                </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_car_diagnosis_tree" model="ir.ui.view">
+        <field name="name">car.diagnosis.tree</field>
+        <field name="model">car.diagnosis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="car"/>
+                <field name="license_id"/>
+                <field name="model"/>
+                <field name="chassis_number"/>
+                <field name="fuel_type"/>
+                <field name="car_manufacturing_year"/>
+                <field name="under_guarantee" widget="radio" readonly="True"/>
+                <field name="nature_of_service"/>
+            </tree>
+        </field>
+    </record>
+
+     <record model = "ir.actions.act_window" id = "car_diagnosis">
+        <field name = "name">Diagnosis</field>
+        <field name = "res_model">car.diagnosis</field>
+        <field name = "view_mode">tree,kanban,form</field>
+    </record>
+
+    <record id="action_car_diagnosis" model="ir.actions.act_window">
+        <field name="name">Car Diagnosis</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">car.repair</field>
+        <field name="view_mode">tree,kanban,form</field>
+<!--        <field name = "domain">[('state', '=', 'in_diagnosis')] </field>-->
+
+    </record>
+
+
+</odoo>

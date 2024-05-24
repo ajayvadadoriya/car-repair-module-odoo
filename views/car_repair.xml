@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_car_repair_form" model="ir.ui.view">
+        <field name="name">car.repair.form</field>
+        <field name="model">car.repair</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_indiagnosis" name="action_in_diagnosis" string="CREATE CAR DIAGNOSIS" class="btn-primary" type="object"/>
+<!--                    <button id="button_in_diagnosis" name="action_in_diagnosis" string="IN DIAGNOSIS" class="btn-primary"-->
+<!--                            type="object"/>-->
+<!--                    <button id="button_quotation_sent" name="action_quotation_sent" string="QUOTATION SENT" class="btn-primary"-->
+<!--                            type="object"/>-->
+<!--                    <button id="button_quotation_approved" name="action_quotation_approved" string="QUOTATION APPROVED" class="btn-primary"-->
+<!--                            type="object"/>-->
+<!--                    <button id="button_work_in_progress" name="action_work_in_progress" string="WORK IN PROGRESS" class="btn-primary"-->
+<!--                            type="object"/>-->
+<!--                    <button id="button_done" name="action_done" string="DONE" class="btn-primary"-->
+<!--                            type="object"/>-->
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_diagnosis" type="object" class="oe_stat_button" icon="fa-calendar">
+                                <div class="o_stat_info">
+                                    <field name="diagnosis_count" class="o_stat_value"/>
+                                    <span class="o_stat_text">Diagnosis</span>
+                                </div>
+                            </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                            <field name="subject_id"/>
+                            <field name="assigns"/>
+                            <field name="date_of_receipt"/>
+                            <field name="image"/>
+                    </group>
+                    <notebook>
+                        <page string="General">
+                            <group>
+                                <field name="client"/>
+                                <field name="contact"/>
+                                <field name="phone"/>
+                                <field name="mobile"/>
+                                <field name="email"/>
+                                <field name="contact_no"/>
+                            </group>
+                            <field name="car_ids"/>
+                             <field name="notes"/>
+                        </page>
+                        <page string="Service Repair Checklist">
+                            <group>
+                                <field name="service_ids"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_car_repair_tree" model="ir.ui.view">
+        <field name="name">car.repair.tree</field>
+        <field name="model">car.repair</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="subject_id"/>
+                <field name="client"/>
+                <field name="contact_no"/>
+                <field name="date_of_receipt"/>
+                <field name="assigns"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_car_repair" model="ir.actions.act_window">
+        <field name="name">Car Repair</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">car.repair</field>
+        <field name="view_mode">tree,kanban,form</field>
+
+    </record>
+
+
+</odoo>

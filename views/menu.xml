@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+
+    <menuitem id="menu_car_root"
+              name="Car Repair"
+              sequence="10"/>
+
+    <menuitem id="menu_car_repair_child"
+              name="Car repairs"
+              parent="menu_car_root"
+              action="action_car_repair"
+              sequence="10"/>
+
+    <menuitem id="menu_car_diagnosis"
+              name="Car Diagnosis"
+              parent="menu_car_repair_child"
+              action="action_car_diagnosis"
+              sequence="20"/>
+
+    <menuitem id="menu_car_checklist"
+              name="Car Checklist"
+              parent="menu_car_root"
+              sequence="10"/>
+
+    <menuitem id="menu_checklist"
+              name="Checklist"
+              parent="menu_car_checklist"
+              action="action_car_checklist"
+              sequence="10"/>
+
+</odoo>
